@@ -167,7 +167,8 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .lightbox{padding:0;gap:0;align-items:stretch}
 .lb-stage{gap:0;max-width:100%;width:100%}
 .lb-track{aspect-ratio:auto;height:100vh;max-height:none;border-radius:0;width:100%}
-.lb-slide img{border-radius:0}
+.lb-slide{width:100%;height:100%}
+.lb-slide img{width:100%;height:100%;object-fit:cover;border-radius:0}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(20,17,10,.45);border-color:rgba(242,232,210,.3);z-index:2}
 .lb-nav:hover{transform:translateY(-50%) scale(1.06)}
 .lb-nav:active{transform:translateY(-50%) scale(.94)}
