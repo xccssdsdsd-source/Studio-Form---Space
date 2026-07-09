@@ -91,7 +91,7 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .hero-title{color:var(--cream);font-size:clamp(2.2rem,6vw,4.6rem);max-width:16ch;text-shadow:0 2px 40px rgba(20,16,8,.4);opacity:0;animation:heroFade 1s var(--ease-out) .5s forwards}
 .hero-title em{font-style:italic;font-weight:400;color:var(--cream)}
 .hero-title .heart{color:var(--sig);display:inline-block;vertical-align:middle;margin-left:.4rem;width:clamp(28px,4vw,44px);height:auto;opacity:.6;cursor:default}
-.hero-actions{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap;margin-top:2.5rem;opacity:0;animation:heroFade 1s var(--ease-out) .7s forwards}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:1.75rem;flex-wrap:wrap;margin-top:2.5rem;opacity:0;animation:heroFade 1s var(--ease-out) .7s forwards}
 @keyframes heroFade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .btn-cream{background:var(--cream);color:var(--dark);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 2px rgba(20,16,8,.2)}
 .btn-cream:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 20px 36px -16px rgba(0,0,0,.55)}
