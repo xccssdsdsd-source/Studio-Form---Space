@@ -140,7 +140,7 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .pillar:hover{transform:translateY(-3px);box-shadow:0 22px 42px -26px rgba(46,40,24,.4);border-color:rgba(198,168,104,.35)}
 .pillar svg{color:var(--gold);margin:0 auto .65rem}
 .pillar h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin-bottom:.35rem}
-.pillar p{font-size:.92rem;color:var(--ink-soft)}
+.pillar p{font-size:.92rem;color:var(--ink-soft);filter:blur(4px);user-select:none}
 
 /* gallery */
 .gallery{padding-block:var(--space);background:var(--surface)}
