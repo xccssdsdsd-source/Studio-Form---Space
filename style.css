@@ -140,7 +140,6 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .g-item:hover img{transform:scale(1.06)}
 .g-item.tall{grid-row:span 2}
 .g-item.wide{grid-column:span 2}
-.g-caption{position:absolute;left:1.25rem;bottom:1rem;right:1.25rem;text-align:left;font-size:.95rem;font-weight:600;letter-spacing:.01em;color:var(--cream)}
 
 /* lightbox */
 .lightbox{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(20,17,10,.92);backdrop-filter:blur(6px);padding:clamp(1rem,4vw,3rem);opacity:0;transition:opacity .35s var(--ease-out)}
@@ -151,9 +150,6 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .lb-slide{position:absolute;inset:0;opacity:0;transform:scale(.98);transition:opacity .45s var(--ease-out),transform .45s var(--ease-out)}
 .lb-slide.active{position:relative;opacity:1;transform:none}
 .lb-slide img{width:100%;height:100%;object-fit:cover;border-radius:16px}
-.lb-caption{position:absolute;left:0;right:0;bottom:0;padding:1.75rem 2rem 1.5rem;background:linear-gradient(to top,rgba(20,17,10,.75),transparent);color:var(--cream);font-family:var(--serif);font-size:clamp(1.2rem,3vw,1.6rem);font-weight:600;opacity:0;transform:translateX(-24px);transition:opacity .5s var(--ease-out) .1s,transform .5s var(--ease-out) .1s}
-.lb-slide.active .lb-caption{opacity:1;transform:none}
-.lb-slide.dir-right .lb-caption{transform:translateX(24px)}
 .lb-nav{flex-shrink:0;width:52px;height:52px;border-radius:999px;border:1px solid rgba(242,232,210,.25);background:rgba(242,232,210,.08);color:var(--cream);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s var(--ease-out),background-color .22s var(--ease-out)}
 .lb-nav:hover{background:rgba(242,232,210,.18);transform:scale(1.06)}
 .lb-nav:active{transform:scale(.94)}
@@ -175,7 +171,6 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .lb-prev{left:.75rem}
 .lb-next{right:.75rem}
 .lb-close{position:absolute;top:1rem;right:1rem;bottom:auto;background:rgba(20,17,10,.45)}
-.lb-caption{padding:2rem 1.5rem 4.5rem;font-size:1.15rem}
 .lb-counter{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;z-index:2}
 }
 

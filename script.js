@@ -50,15 +50,15 @@ let lastFocused = null
 
 const slides = galleryItems.map(item => {
   const img = item.querySelector('img')
-  return {src: img.src, alt: img.alt, caption: item.querySelector('.g-caption').textContent}
+  return {src: img.src, alt: img.alt}
 })
 
 const renderSlide = (dir) => {
-  const {src, alt, caption} = slides[lbIndex]
+  const {src, alt} = slides[lbIndex]
   const old = lbTrack.querySelector('.lb-slide')
   const next = document.createElement('figure')
   next.className = `lb-slide${dir === 'right' ? ' dir-right' : ''}`
-  next.innerHTML = `<img src="${src}" alt="${alt}"><figcaption class="lb-caption">${caption}</figcaption>`
+  next.innerHTML = `<img src="${src}" alt="${alt}">`
   lbTrack.appendChild(next)
   requestAnimationFrame(() => next.classList.add('active'))
   if (old) old.remove()
