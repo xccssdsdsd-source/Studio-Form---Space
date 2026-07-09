@@ -1,3 +1,5 @@
+document.documentElement.classList.remove('no-js')
+
 const header = document.getElementById('site-header')
 const toggle = document.querySelector('.menu-toggle')
 
@@ -26,13 +28,83 @@ const io = new IntersectionObserver((entries) => {
   })
 }, {threshold: 0.01, rootMargin: '0px 0px -8% 0px'})
 const reveals = document.querySelectorAll('.reveal')
-reveals.forEach(el => io.observe(el))
-window.addEventListener('load', () => {
-  setTimeout(() => reveals.forEach(el => {
-    const r = el.getBoundingClientRect()
-    if (r.top < window.innerHeight) el.classList.add('in')
-  }), 200)
+document.querySelectorAll('.pillars, .grid-services, .stats, .grid-gallery').forEach(group => {
+  [...group.children].forEach((child, i) => {
+    if (child.classList.contains('reveal') && !child.style.getPropertyValue('--i')) child.style.setProperty('--i', i)
+  })
 })
+reveals.forEach(el => io.observe(el))
+setTimeout(() => reveals.forEach(el => {
+  if (!el.classList.contains('in') && el.getBoundingClientRect().top < window.innerHeight * 1.1) el.classList.add('in')
+}), 300)
+
+const galleryItems = [...document.querySelectorAll('.g-item')]
+const lightbox = document.getElementById('lightbox')
+const lbTrack = lightbox.querySelector('.lb-track')
+const lbCounter = lightbox.querySelector('.lb-counter')
+const lbPrev = lightbox.querySelector('.lb-prev')
+const lbNext = lightbox.querySelector('.lb-next')
+const lbClose = lightbox.querySelector('.lb-close')
+let lbIndex = 0
+let lastFocused = null
+
+const slides = galleryItems.map(item => {
+  const img = item.querySelector('img')
+  return {src: img.src, alt: img.alt, caption: item.querySelector('.g-caption').textContent}
+})
+
+const renderSlide = (dir) => {
+  const {src, alt, caption} = slides[lbIndex]
+  const old = lbTrack.querySelector('.lb-slide')
+  const next = document.createElement('figure')
+  next.className = `lb-slide${dir === 'right' ? ' dir-right' : ''}`
+  next.innerHTML = `<img src="${src}" alt="${alt}"><figcaption class="lb-caption">${caption}</figcaption>`
+  lbTrack.appendChild(next)
+  requestAnimationFrame(() => next.classList.add('active'))
+  if (old) old.remove()
+  lbCounter.textContent = `${lbIndex + 1} / ${slides.length}`
+}
+
+const openLightbox = (index) => {
+  lbIndex = index
+  lastFocused = document.activeElement
+  lightbox.hidden = false
+  requestAnimationFrame(() => lightbox.classList.add('open'))
+  renderSlide()
+  document.body.style.overflow = 'hidden'
+  lbClose.focus()
+}
+
+const closeLightbox = () => {
+  lightbox.classList.remove('open')
+  document.body.style.overflow = ''
+  setTimeout(() => { lightbox.hidden = true }, 350)
+  if (lastFocused) lastFocused.focus()
+}
+
+const goTo = (delta) => {
+  lbIndex = (lbIndex + delta + slides.length) % slides.length
+  renderSlide(delta > 0 ? 'right' : 'left')
+}
+
+galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)))
+lbPrev.addEventListener('click', () => goTo(-1))
+lbNext.addEventListener('click', () => goTo(1))
+lbClose.addEventListener('click', closeLightbox)
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox() })
+document.addEventListener('keydown', (e) => {
+  if (lightbox.hidden) return
+  if (e.key === 'Escape') closeLightbox()
+  if (e.key === 'ArrowRight') goTo(1)
+  if (e.key === 'ArrowLeft') goTo(-1)
+})
+
+let touchStartX = 0
+lbTrack.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX }, {passive: true})
+lbTrack.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX
+  if (Math.abs(dx) > 40) goTo(dx < 0 ? 1 : -1)
+}, {passive: true})
 
 const form = document.querySelector('.contact-form')
 const status = document.querySelector('.form-status')
