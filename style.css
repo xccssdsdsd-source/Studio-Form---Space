@@ -293,4 +293,6 @@ footer{padding-block:3.5rem 2rem}
 .hero-img{animation:none;transform:scale(1.02)}
 .hero-content .eyebrow,.hero-sub,.hero-title,.hero-actions{opacity:1;animation:none}
 .g-item img{transition:none}
+.about-photo img{transition:none}
+.about-photo:hover img{transform:scale(1.28)}
 }
