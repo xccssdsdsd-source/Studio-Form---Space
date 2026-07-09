@@ -106,6 +106,15 @@ lbTrack.addEventListener('touchend', (e) => {
   if (Math.abs(dx) > 40) goTo(dx < 0 ? 1 : -1)
 }, {passive: true})
 
+const stickyCta = document.getElementById('sticky-cta')
+const contactSection = document.getElementById('kontakt')
+if (stickyCta && contactSection) {
+  const ctaIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => stickyCta.classList.toggle('hidden', e.isIntersecting))
+  }, {threshold: 0.15})
+  ctaIo.observe(contactSection)
+}
+
 const form = document.querySelector('.contact-form')
 const status = document.querySelector('.form-status')
 form.addEventListener('submit', (e) => {
