@@ -60,6 +60,25 @@ if (reduced || !window.anime) {
     .add({targets: '.hero-actions > *', opacity: [0, 1], translateY: [20, 0], duration: 850, delay: anime.stagger(110)}, '-=800')
 }
 
+const heroMedia = document.querySelector('.hero-media')
+const heroSection = document.querySelector('.hero')
+if (heroMedia && heroSection && !reduced) {
+  let ticking = false
+  const updateHeroParallax = () => {
+    const rect = heroSection.getBoundingClientRect()
+    const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1)
+    heroMedia.style.transform = `translateY(${progress * -45}px)`
+    ticking = false
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateHeroParallax)
+      ticking = true
+    }
+  }, {passive: true})
+  updateHeroParallax()
+}
+
 const galleryItems = [...document.querySelectorAll('.g-item')]
 
 if (!reduced && window.anime) {
