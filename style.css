@@ -51,7 +51,9 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .link-underline:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
 
 /* header */
-#site-header{position:fixed;top:0;left:0;right:0;z-index:100;color:var(--cream);transition:background-color .5s var(--ease-out),box-shadow .5s var(--ease-out),color .4s ease}
+#site-header{position:fixed;top:0;left:0;right:0;z-index:100;color:var(--cream);transition:background-color .5s var(--ease-out),box-shadow .5s var(--ease-out),color .4s ease,opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.js #site-header{opacity:0;transform:translateY(-100%);pointer-events:none}
+.js #site-header.scrolled{opacity:1;transform:none;pointer-events:auto}
 #site-header::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,16,8,.4),transparent);opacity:1;transition:opacity .4s ease;pointer-events:none;z-index:-1}
 #site-header.scrolled{color:var(--ink);background:rgba(241,233,210,.88);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line-soft)}
 #site-header.scrolled::before{opacity:0}
@@ -84,6 +86,8 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .hero-bg{position:absolute;inset:0;background:var(--dark);z-index:-3}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.08);filter:brightness(1.15);animation:kenburns 20s var(--ease-in-out) infinite alternate;will-change:transform}
 @keyframes kenburns{from{transform:scale(1.08) translate(0,0)}to{transform:scale(1.16) translate(-1.5%,-2%)}}
+.hero-placeholder .hero-bg{background:linear-gradient(135deg,var(--dark),#241f14)}
+.hero-placeholder::after{content:"";position:absolute;inset:1.5rem;border:1px dashed rgba(242,232,210,.25);border-radius:var(--r-lg);z-index:-1;pointer-events:none}
 .hero-scrim{position:absolute;inset:0;z-index:-1;background:
  linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.15) 45%,rgba(0,0,0,.5) 100%),
  linear-gradient(to top,rgba(24,20,12,.94) 0%,rgba(24,20,12,.7) 30%,rgba(24,20,12,.32) 55%,rgba(24,20,12,.42) 100%),
@@ -95,7 +99,7 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .hero-content .eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
 .hero-sub{font-family:var(--script);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.9rem);color:var(--cream-soft);margin-bottom:1rem;opacity:0;animation:heroFade .9s var(--ease-out) .35s forwards}
 .hero-title{color:var(--cream);font-size:clamp(2.2rem,6vw,4.6rem);max-width:16ch;text-shadow:0 2px 40px rgba(20,16,8,.4);opacity:0;animation:heroFade 1s var(--ease-out) .5s forwards}
-.hero-title em{font-style:italic;font-weight:400;color:var(--cream)}
+.hero-title em{font-style:italic;font-weight:800;color:var(--cream)}
 .hero-title .heart{color:var(--sig);display:inline-block;vertical-align:baseline;margin-left:.15em;width:clamp(24px,3.2vw,38px);height:auto;opacity:.75;translate:0 .06em}
 .hero-actions{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2.75rem;opacity:0;animation:heroFade 1s var(--ease-out) .7s forwards}
 @keyframes heroFade{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
