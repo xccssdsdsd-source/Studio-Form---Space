@@ -59,8 +59,7 @@ if (reduced || !window.anime) {
   anime.timeline({easing: 'cubicBezier(.16,1,.3,1)'})
     .add({targets: '.hero-kicker', opacity: [0, 1], translateY: [18, 0], duration: 900, delay: 200})
     .add({targets: '.hero-title', opacity: [0, 1], translateY: [30, 0], duration: 1100}, '-=650')
-    .add({targets: '.hero-lead', opacity: [0, 1], translateY: [18, 0], duration: 850}, '-=800')
-    .add({targets: '.hero-actions > *', opacity: [0, 1], translateY: [20, 0], duration: 850, delay: anime.stagger(110)}, '-=650')
+    .add({targets: '.hero-actions > *', opacity: [0, 1], translateY: [20, 0], duration: 850, delay: anime.stagger(110)}, '-=700')
 }
 
 const galleryItems = [...document.querySelectorAll('.g-item')]

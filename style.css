@@ -95,10 +95,9 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 .hero-sub{font-family:var(--script);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.9rem);color:var(--cream-soft);margin-bottom:1rem;opacity:0;animation:heroFade .9s var(--ease-out) .35s forwards}
 .hero-kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:1.25rem;padding-left:3rem;position:relative;text-shadow:0 2px 16px rgba(20,16,8,.45)}
 .hero-kicker::before{content:"";position:absolute;left:0;top:50%;width:2.2rem;height:1px;background:var(--gold)}
-.hero-title{color:#fff;font-size:clamp(2.8rem,6.4vw,5.4rem);max-width:18ch;text-shadow:0 2px 28px rgba(20,16,8,.42);opacity:0;animation:heroFade 1s var(--ease-out) .5s forwards;line-height:.98}
-.hero-title em{font-style:italic;font-weight:800;color:var(--cream)}
-.hero-lead{color:rgba(255,255,255,.86);font-family:var(--script);font-size:clamp(1.25rem,2vw,1.65rem);font-style:italic;margin-top:1.3rem;text-shadow:0 2px 16px rgba(20,16,8,.5)}
-.hero-actions{display:flex;align-items:center;justify-content:flex-start;gap:2rem;flex-wrap:wrap;margin-top:2rem;opacity:0;animation:heroFade 1s var(--ease-out) .7s forwards}
+.hero-title{font-family:var(--script);font-weight:500;color:#fff;font-size:clamp(3.25rem,7.2vw,6.25rem);max-width:18ch;letter-spacing:-.045em;text-shadow:0 2px 28px rgba(20,16,8,.38);opacity:0;animation:heroFade 1s var(--ease-out) .5s forwards;line-height:.86}
+.hero-title em{display:inline-block;font-style:italic;font-weight:400;color:var(--cream);letter-spacing:-.035em;margin-top:.12em}
+.hero-actions{display:flex;align-items:center;justify-content:flex-start;gap:2rem;flex-wrap:wrap;margin-top:2.5rem;opacity:0;animation:heroFade 1s var(--ease-out) .7s forwards}
 .hero-actions .btn{gap:.75rem;padding-inline:1.7rem}
 .hero-scroll{position:absolute;right:clamp(1.25rem,5vw,3rem);bottom:2.2rem;color:#fff;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;z-index:2}
 .hero-scroll span{display:block;width:3.5rem;height:1px;background:rgba(255,255,255,.65);transition:width .3s var(--ease-out)}
