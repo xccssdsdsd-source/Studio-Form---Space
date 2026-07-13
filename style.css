@@ -120,7 +120,7 @@ h1,h2,h3{line-height:1.05;letter-spacing:-.03em}
 /* proof */
 .proof{padding-block:var(--space)}
 .proof .eyebrow{margin-bottom:2.5rem}
-.proof-title{max-width:18ch;margin-inline:auto;color:var(--cream)}
+.proof-title{max-width:22ch;margin-inline:auto;color:var(--cream)}
 .proof-manifesto{text-align:center;font-family:var(--script);font-style:italic;font-size:clamp(1.4rem,3vw,2rem);color:var(--gold);margin-top:1.25rem}
 .line-cards{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);margin-top:4.5rem}
 .line-card{display:flex;flex-direction:column;padding:2.25rem;min-height:190px}

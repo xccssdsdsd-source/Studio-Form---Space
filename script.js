@@ -31,6 +31,8 @@ document.querySelectorAll('.pillars, .grid-services, .stats').forEach(group => {
 if (reduced || !window.anime) {
   reveals.forEach(el => el.classList.add('in'))
   document.querySelectorAll('.hero-title, .hero-actions').forEach(el => { el.style.opacity = '1' })
+  document.querySelectorAll('.g-item').forEach(el => { el.style.opacity = '1' })
+  document.querySelectorAll('.g-media').forEach(el => { el.style.clipPath = 'none' })
 } else {
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
