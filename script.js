@@ -30,6 +30,7 @@ document.querySelectorAll('.pillars, .grid-services, .stats').forEach(group => {
 
 if (reduced || !window.anime) {
   reveals.forEach(el => el.classList.add('in'))
+  document.querySelectorAll('.hero-title, .hero-actions').forEach(el => { el.style.opacity = '1' })
 } else {
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
@@ -54,28 +55,10 @@ if (reduced || !window.anime) {
   reveals.forEach(el => io.observe(el))
 
   anime.timeline({easing: 'cubicBezier(.16,1,.3,1)'})
-    .add({targets: '.hero-content .eyebrow', opacity: [0, 1], translateY: [18, 0], duration: 900, delay: 200})
+    .add({targets: '.hero-kicker', opacity: [0, 1], translateY: [18, 0], duration: 900, delay: 200})
     .add({targets: '.hero-title', opacity: [0, 1], translateY: [30, 0], duration: 1100}, '-=650')
-    .add({targets: '.hero-actions > *', opacity: [0, 1], translateY: [20, 0], duration: 850, delay: anime.stagger(110)}, '-=800')
-}
-
-const heroMedia = document.querySelector('.hero-media')
-const heroSection = document.querySelector('.hero')
-if (heroMedia && heroSection && !reduced) {
-  let ticking = false
-  const updateHeroParallax = () => {
-    const rect = heroSection.getBoundingClientRect()
-    const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1)
-    heroMedia.style.transform = `translateY(${progress * -45}px)`
-    ticking = false
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateHeroParallax)
-      ticking = true
-    }
-  }, {passive: true})
-  updateHeroParallax()
+    .add({targets: '.hero-lead', opacity: [0, 1], translateY: [18, 0], duration: 850}, '-=800')
+    .add({targets: '.hero-actions > *', opacity: [0, 1], translateY: [20, 0], duration: 850, delay: anime.stagger(110)}, '-=650')
 }
 
 const galleryItems = [...document.querySelectorAll('.g-item')]

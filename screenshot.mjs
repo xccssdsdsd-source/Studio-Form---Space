@@ -9,7 +9,7 @@ await mkdir('./temporary screenshots', {recursive: true})
 const browser = await puppeteer.launch({executablePath: chrome, headless: 'new'})
 const page = await browser.newPage()
 await page.setViewport({width, height: 900, deviceScaleFactor: 1})
-await page.goto(url, {waitUntil: 'networkidle0'})
+await page.goto(url, {waitUntil: 'domcontentloaded', timeout: 10000})
 await page.evaluate(async () => {
   await new Promise(res => {
     let y = 0

@@ -3,6 +3,7 @@ import {readFile} from 'fs/promises'
 import {extname, join, normalize} from 'path'
 
 const root = process.cwd()
+const port = Number(process.argv[2]) || 3000
 const types = {'.html':'text/html','.css':'text/css','.js':'text/javascript','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ico':'image/x-icon'}
 
 createServer(async (req, res) => {
@@ -16,4 +17,4 @@ createServer(async (req, res) => {
   } catch {
     res.writeHead(404); res.end('Not found')
   }
-}).listen(3000, () => console.log('http://localhost:3000'))
+}).listen(port, () => console.log(`http://localhost:${port}`))
