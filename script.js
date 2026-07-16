@@ -5,9 +5,18 @@ if (!reduced) document.documentElement.classList.add('js')
 const header = document.getElementById('site-header')
 const toggle = document.querySelector('.menu-toggle')
 
-const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40)
+const progress = document.createElement('div')
+progress.className = 'scroll-progress'
+document.body.appendChild(progress)
+
+const onScroll = () => {
+  header.classList.toggle('scrolled', window.scrollY > 40)
+  const max = document.documentElement.scrollHeight - window.innerHeight
+  progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%'
+}
 onScroll()
 window.addEventListener('scroll', onScroll, {passive: true})
+window.addEventListener('resize', onScroll, {passive: true})
 
 toggle.addEventListener('click', () => {
   const open = header.classList.toggle('open')
