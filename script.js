@@ -5,9 +5,18 @@ if (!reduced) document.documentElement.classList.add('js')
 const header = document.getElementById('site-header')
 const toggle = document.querySelector('.menu-toggle')
 
-const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40)
+const progress = document.createElement('div')
+progress.className = 'scroll-progress'
+document.body.appendChild(progress)
+
+const onScroll = () => {
+  header.classList.toggle('scrolled', window.scrollY > 40)
+  const max = document.documentElement.scrollHeight - window.innerHeight
+  progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%'
+}
 onScroll()
 window.addEventListener('scroll', onScroll, {passive: true})
+window.addEventListener('resize', onScroll, {passive: true})
 
 toggle.addEventListener('click', () => {
   const open = header.classList.toggle('open')
@@ -192,3 +201,15 @@ form.addEventListener('submit', (e) => {
   status.textContent = 'Dziękuję! Odezwę się w ciągu 24 godzin.'
   form.reset()
 })
+
+if (!reduced && matchMedia('(pointer:fine)').matches) {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('pointermove', (e) => {
+      const r = btn.getBoundingClientRect()
+      const x = (e.clientX - r.left - r.width / 2) / r.width
+      const y = (e.clientY - r.top - r.height / 2) / r.height
+      btn.style.transform = `translate(${x * 8}px, ${y * 8}px)`
+    })
+    btn.addEventListener('pointerleave', () => { btn.style.transform = '' })
+  })
+}
