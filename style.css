@@ -315,6 +315,35 @@ footer{padding-block:3.5rem 2rem}
 .no-js .reveal{opacity:1;transform:none}
 .js .reveal{transition:none;transform:none}
 
+/* extra motion polish */
+.nav a:not(.btn){position:relative}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease-out)}
+.nav a:not(.btn):hover::after{transform:scaleX(1);transform-origin:left}
+.pillar{transition:background-color .25s var(--ease-out),transform .4s var(--ease-out)}
+.pillar svg{transition:transform .5s var(--ease-out),color .3s var(--ease-out)}
+.pillar:hover svg{transform:translateY(-3px) scale(1.12) rotate(-4deg)}
+.service svg{transition:transform .55s var(--ease-out)}
+.service:hover svg{transform:translateY(-4px) scale(1.1) rotate(-4deg)}
+.process-step{transition:background-color .3s var(--ease-out)}
+.process-step:hover{background:#F6F0DF}
+.step-no{transition:transform .5s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out),border-color .35s var(--ease-out)}
+.process-step:hover .step-no{background:var(--gold);color:#2A2314;border-color:var(--gold);transform:scale(1.1) rotate(360deg)}
+.about-photo{transition:box-shadow .4s var(--ease-out),transform .5s var(--ease-out)}
+.about-photo:hover{box-shadow:0 30px 60px -24px rgba(20,16,9,.5),0 0 0 1px rgba(198,168,104,.55)}
+.ig-link{transition:color .3s var(--ease-out)}
+.ig-link svg{transition:transform .5s var(--ease-out)}
+.ig-link:hover{color:var(--gold)}
+.ig-link:hover svg{transform:rotate(8deg) scale(1.12)}
+.field input,.field textarea{transition:border-color .3s var(--ease-out),box-shadow .3s var(--ease-out),background-color .3s var(--ease-out)}
+.field label{transition:color .3s var(--ease-out)}
+.field:focus-within label{color:var(--gold)}
+.proof,.contact{position:relative;overflow:hidden}
+.proof>.wrap,.contact>.wrap{position:relative;z-index:1}
+.proof::before,.contact::before{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(60px);opacity:.55}
+.proof::before{width:340px;height:340px;top:-90px;right:-60px;background:radial-gradient(circle,rgba(198,168,104,.30),transparent 70%);animation:orbFloat 15s ease-in-out infinite}
+.contact::before{width:320px;height:320px;bottom:-70px;left:-50px;background:radial-gradient(circle,rgba(199,154,142,.26),transparent 70%);animation:orbFloat 18s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-26px,22px) scale(1.1)}}
+
 /* responsive */
 @media(max-width:900px){
 .nav{display:none}

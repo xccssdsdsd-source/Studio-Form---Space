@@ -201,3 +201,15 @@ form.addEventListener('submit', (e) => {
   status.textContent = 'Dziękuję! Odezwę się w ciągu 24 godzin.'
   form.reset()
 })
+
+if (!reduced && matchMedia('(pointer:fine)').matches) {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('pointermove', (e) => {
+      const r = btn.getBoundingClientRect()
+      const x = (e.clientX - r.left - r.width / 2) / r.width
+      const y = (e.clientY - r.top - r.height / 2) / r.height
+      btn.style.transform = `translate(${x * 8}px, ${y * 8}px)`
+    })
+    btn.addEventListener('pointerleave', () => { btn.style.transform = '' })
+  })
+}
